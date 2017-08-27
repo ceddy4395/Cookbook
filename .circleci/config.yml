@@ -11,8 +11,8 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          name: setting term
-          command: ENV TERM dumb
+          name: set docker
+          command: docker run -t image
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
