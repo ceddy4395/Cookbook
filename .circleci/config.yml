@@ -12,7 +12,7 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: setting term
-          command: set | grep TERM
+          command: export TERM=xterm
       - run:
           name: Download Dependencies
           command: ./gradlew androidDependencies
