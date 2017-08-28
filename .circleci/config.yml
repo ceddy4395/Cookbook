@@ -18,20 +18,6 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          name: Building project
-          command: export TERM=xterm && ./gradlew build
-
-  test:
-    working_direcotry: ~/code
-    docker:
-      -image: circleci/android:api-24-alpha
-    environment:
-      JVM_OPTS: -Xmx3200m
-    steps:
-      - checkout
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
           name: Run Tests
           command: export TERM=xterm && ./gradlew lint test
       - store_artifacts:
@@ -39,9 +25,3 @@ jobs:
           destination: reports
       - store_test_results:
           path: app/build/test-results
-workflows:
-  version: 2
-  build-and-test:
-  jobs:
-    -build
-    -test
