@@ -26,7 +26,7 @@ jobs:
       - store_test_results:
           path: app/build/test-results
       - run:
-        name: Test reports
-        command: ./gradlew connectedCheck
+          name: Test reports
+          command: ./gradlew connectedCheck
       - post:
-        - bash <(curl -s https://codecov.io/bash)
+          - bash <(curl -s https://codecov.io/bash)
