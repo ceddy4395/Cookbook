@@ -28,6 +28,5 @@ jobs:
       - run:
           name: Test reports
           command: ./gradlew connectedCheck
-  test:
     post:
       - bash <(curl -s https://codecov.io/bash)
