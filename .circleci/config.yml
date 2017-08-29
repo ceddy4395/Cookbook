@@ -27,6 +27,6 @@ jobs:
           path: app/build/test-results
       - run:
           name: Test reports
-          command: ./gradlew connectedCheck
+          command: export TERM=xterm && ./gradlew connectedCheck
     post:
       - bash <(curl -s https://codecov.io/bash)
